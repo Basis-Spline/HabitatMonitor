@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habitat Monitoring Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+</head>
+<body>
+    <h1>Habitat Monitoring Data</h1>
+    <table border="1">
+        <tr>
+            <th>Node ID</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Soil Moisture</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for data in sensor_data %}
+        <tr>
+            <td>{{ data.node_id }}</td>
+            <td>{{ data.temperature }}</td>
+            <td>{{ data.humidity }}</td>
+            <td>{{ data.soil_moisture }}</td>
+            <td>{{ data.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        var socket = io();
+        socket.on('new_data', function(data) {
+            var table = document.querySelector('table');
+            var row = table.insertRow(1);
+            row.insertCell(0).innerText = data.node_id;
+            row.insertCell(1).innerText = data.temperature;
+            row.insertCell(2).innerText = data.humidity;
+            row.insertCell(3).innerText = data.soil_moisture;
+            row.insertCell(4).innerText = data.timestamp;
+        });
+    </script>
+</body>
+</html>
