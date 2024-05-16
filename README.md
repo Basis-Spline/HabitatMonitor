@@ -8,7 +8,7 @@
 - **Soil Moisture Monitoring**: Uses soil moisture sensors to monitor soil conditions.
 - **Wireless Data Transmission**: Utilizes the ESP32’s Wi-Fi capabilities to send sensor data to a remote server.
 - **MicroPython on ESP32**: Leverages MicroPython for easy and efficient development on the ESP32.
-- **Flask Server**: Implements a Flask server to receive, process, and display the data.
+- **Flask Server with WebSocket**: Implements a Flask server to receive, process, and display the data with real-time updates using WebSocket.
 - **Real-Time Data Visualization**: Displays the collected data on a web interface.
 
 ## Components
@@ -29,3 +29,4 @@
 2. **Upload `main.py` to your ESP32 using a tool like `ampy` or `mpfshell`.**
    ```bash
    ampy --port /dev/ttyUSB0 put main.py
+
